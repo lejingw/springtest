@@ -1,6 +1,19 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
+MySpring/target/
+.DS_Store
+MySpringMVC/target/
+MySpringMVC/work/
+classes
+build
+MySpringMVC/.tomcatplugin
+MySpringMVC/.classpath
+MySpringMVC/.project
+MySpringMVC/.settings/
+MySpringMVC/src/main/webapp/WEB-INF/lib/
+MySpringMVCTest/.tomcatplugin
+MySpringMVCTest/.classpath
+MySpringMVCTest/.project
+MySpringMVCTest/.settings/
+MySpringMVCTest/src/main/webapp/WEB-INF/lib/
+shiro-example/
+.svn
+designpattern/
