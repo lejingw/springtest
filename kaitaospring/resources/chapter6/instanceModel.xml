@@ -19,7 +19,7 @@
 
    <bean id="singletonAspect" class="cn.javass.spring.chapter6.aop.SingletonAspect"/>
    <bean id="perthisAspect" class="cn.javass.spring.chapter6.aop.PerthisAspect" scope="prototype"/>
-   <bean id="pertargetAspect" class="cn.javass.spring.chapter6.aop.PertargetAspect" scope="prototype"/>
+   <bean id="pertargetAspect" class="cn.javass.spring.chapter6.aop.PertargetAspect1" scope="prototype"/>
    <bean id="pertargetAspect2" class="cn.javass.spring.chapter6.aop.PertargetAspect2" scope="prototype"/>
 
         

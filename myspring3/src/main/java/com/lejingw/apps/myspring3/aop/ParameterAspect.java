@@ -1,18 +1,19 @@
-package cn.javass.spring.chapter6.aop;
+package com.lejingw.apps.myspring3.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.aop.support.AopUtils;
 
-import cn.javass.spring.chapter6.Secure;
-import cn.javass.spring.chapter6.service.IPointcutService;
+import com.lejingw.apps.myspring3.aop.service.IPointcutService;
 
 @Aspect
 public class ParameterAspect {
   
     @Before(value="execution(* sayBefore(*))")
     public void before(JoinPoint jp) {
+        System.out.println("===========JoinPoint==========");
         System.out.println("==kind:" + jp.getKind());
         System.out.println("==target:" + jp.getTarget());
         System.out.println("==this:" + jp.getThis());
@@ -59,6 +60,8 @@ public class ParameterAspect {
     public void before5(JoinPoint jp, String param, IPointcutService pointcutService, Secure secure) {
         System.out.println("===param5:" + param);
         System.out.println("===target:" + pointcutService);
+
+        System.out.println("===isAopProxy:" +AopUtils.isAopProxy(pointcutService));
         System.out.println("===annotation:" + secure);
     }
     
@@ -74,5 +77,14 @@ public class ParameterAspect {
         System.out.println("===param6:" + param);
         System.out.println("===annotation:" + secure);
     }
-    
+
+
+    @Before(value="args(param) && this(bean) && @annotation(secure)", 
+            argNames="jp,param,bean,secure")
+    public void before7(JoinPoint jp, String param, IPointcutService pointcutService, Secure secure) {
+        System.out.println("===param7:" + param);
+        System.out.println("===target:" + pointcutService);
+        System.out.println("===isAopProxy:" +AopUtils.isAopProxy(pointcutService));
+        System.out.println("===annotation:" + secure);
+    }
 }
