@@ -13,8 +13,6 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import junit.framework.Assert;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -52,6 +50,8 @@ import org.springframework.jdbc.object.StoredProcedure;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+
+import com.lejingw.apps.myspring3.jdbc.template.model.UserRowMapper;
 
 import cn.javass.spring.chapter7.dao.IUserDao;
 

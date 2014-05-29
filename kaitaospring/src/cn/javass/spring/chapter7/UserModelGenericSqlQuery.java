@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.GenericSqlQuery;
 
+import com.lejingw.apps.myspring3.jdbc.template.model.UserRowMapper;
+
 public class UserModelGenericSqlQuery extends GenericSqlQuery {
     
     public UserModelGenericSqlQuery(JdbcTemplate jdbcTemplate) throws IllegalAccessException, InstantiationException {

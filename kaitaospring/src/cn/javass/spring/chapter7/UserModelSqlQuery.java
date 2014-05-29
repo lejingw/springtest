@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.SqlQuery;
 
+import com.lejingw.apps.myspring3.jdbc.template.model.UserRowMapper;
+
 public class UserModelSqlQuery extends SqlQuery<UserModel> {
     
     public UserModelSqlQuery(JdbcTemplate jdbcTemplate) {
