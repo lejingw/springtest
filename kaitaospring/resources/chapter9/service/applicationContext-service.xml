@@ -17,7 +17,6 @@
     
     
     <!-- Required传播行为 开始-->
-    
     <bean id="requiredUserServiceWithSuccess" class="cn.javass.spring.chapter9.service.impl.required.RequiredUserServiceImplWithSuccess">
         <property name="userDao" ref="userDao"/>
         <property name="txManager" ref="txManager"/>

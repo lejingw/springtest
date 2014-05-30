@@ -15,7 +15,10 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="persistenceXmlLocation" value="classpath:com/lejingw/apps/myspring3/orm/jpa/persistence.xml" />
+		<!--
+		注意：persistence.xml必须放在classpath下的META-INF目录中，且hibernate-jpa会自动从根目录开始扫描*.hbm配置文件和@Entity注释的类
+		 -->
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
 		<property name="persistenceUnitName" value="persistenceUnit" />
 
 		<property name="persistenceProvider" ref="persistenceProvider" />
@@ -30,8 +33,7 @@
 
 	<bean id="persistenceProvider" class="org.hibernate.ejb.HibernatePersistence" />
 
-	<bean id="jpaVendorAdapter"
-		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="generateDdl" value="false" />
 		<property name="database" value="HSQL" />
 	</bean>
@@ -48,7 +50,7 @@
 	<bean id="abstractDao" abstract="true">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-	<bean id="userDao" class="com.lejingw.apps.myspring3.orm.jpa.dao.UserJpaDaoImpl"
-		parent="abstractDao" />
+	
+	<bean id="userDao" class="com.lejingw.apps.myspring3.orm.jpa.dao.UserJpaDaoImpl" parent="abstractDao" />
 
 </beans>
