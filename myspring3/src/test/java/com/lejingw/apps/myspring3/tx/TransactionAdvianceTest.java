@@ -58,7 +58,9 @@ public class TransactionAdvianceTest extends TransactionPropagationBase{
 		ctx.getBean(DataSourceTransactionManager.class).setValidateExistingTransaction(true);
 		
 		//外部事务readonly为false，内部readonly为true，不会抛出异常（即使内部事务中有修改数据的行为发生）
-		userService.save(createDefaultUserModel());
+		UserModel user = createDefaultUserModel();
+		userService.save(user);
+		//addressService.save(user.getAddress());
 		
 		try {
 			//readonly为true，内部调用的addressService.countAll()的readonly为false
@@ -113,10 +115,8 @@ public class TransactionAdvianceTest extends TransactionPropagationBase{
 		JdbcTemplate jdbcTemplate2 = new JdbcTemplate(dataSource2);
 		jdbcTemplate2.update(CREATE_USER_TABLE_SQL);
 		jdbcTemplate2.update(CREATE_ADDRESS_TABLE_SQL);
-		IUserService userService = ctx2.getBean("userService",
-				IUserService.class);
-		IAddressService addressService = ctx2.getBean("addressService",
-				IAddressService.class);
+		IUserService userService = ctx2.getBean("userService", IUserService.class);
+		IAddressService addressService = ctx2.getBean("addressService", IAddressService.class);
 		UserModel user = createDefaultUserModel();
 		userService.save(user);
 		Assert.assertEquals(1, userService.countAll());
