@@ -49,6 +49,7 @@ public class ComponentDefinitionWithAnnotationTest {
 
 	@Test
 	public void testCache() {
+		//因为TestCache被自定义annotation Cache注释,而Cache被component注释，可以被spring scan到
 		TestCache cache = ctx.getBean("cache", TestCache.class);
 		Assert.assertNotNull(cache);
 	}

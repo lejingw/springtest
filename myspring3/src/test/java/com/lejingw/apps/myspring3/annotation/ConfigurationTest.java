@@ -18,7 +18,9 @@ public class ConfigurationTest {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(
 				ApplicationContextConfig.class);
 		Assert.assertEquals("hello", ctx.getBean("message"));
-		Assert.assertNotNull(ctx.getBean("ctxConfig"));
+		Object bean = ctx.getBean("ctxConfig");
+		System.out.println("=="+bean);
+		Assert.assertNotNull(bean);
 	}
 
 	@Test
